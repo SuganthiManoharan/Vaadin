@@ -1,0 +1,14 @@
+version: 2.0
+
+jobs:
+    build:
+        docker:
+            - image: sugan1234/vaadin:v1
+		environment:
+		  MAVEN_CLI_OPTS: "--batch-mode"
+        steps:
+            - checkout
+            - run: mvn $MAVEN_CLI_OPTS clean package -Pproduction -e
+            - store_artifacts:
+                path: target/*.jar
+                destination: target
