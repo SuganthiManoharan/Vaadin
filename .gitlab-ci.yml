@@ -1,0 +1,25 @@
+image: sugan1234/vaadin:v1
+variables:
+  MAVEN_CLI_OPTS: "--batch-mode"
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - mvn $MAVEN_CLI_OPTS clean package -Pproduction -e
+  artifacts:
+    paths:
+      - target/*.jar
+
+test:
+  stage: test
+  script:
+    - mvn test -e
+
+
+
+
