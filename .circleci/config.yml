@@ -10,5 +10,5 @@ jobs:
             - checkout
             - run: mvn $MAVEN_CLI_OPTS clean package -Pproduction -e
             - store_artifacts:
-                path: target/*.jar
+                path: target
                 destination: target
